@@ -6,11 +6,17 @@ from llama_cpp import Llama
 
 app = Flask(__name__)
 
-MODEL_PATH = r"C:\Users\someb\Documents\techx-sfax\model\models--Hamatoysin--autibot\snapshots\ba8cbad4719a198ea5bb1d8dff51bc2c5afd6138\unsloth.Q8_0.gguf"
+#MODEL_PATH = r"model\models--Hamatoysin--autibot\snapshots\ba8cbad4719a198ea5bb1d8dff51bc2c5afd6138\unsloth.Q8_0.gguf"
 
 
 
-client = Llama(model_path=MODEL_PATH)
+#client = Llama(model_path=MODEL_PATH) this is for local model after download
+
+# this to download the model
+client = Llama.from_pretrained(
+	repo_id="Hamatoysin/autibot",
+	filename="unsloth.Q8_0.gguf",
+)
 
 @app.route('/')
 def index():
